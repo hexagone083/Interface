@@ -6,6 +6,8 @@
 package TD2;
 
 import Tools.Tools;
+import java.awt.event.ActionEvent;
+import javax.swing.Timer;
 
 /**
  *
@@ -88,21 +90,23 @@ public class Exercice2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
-         switch (etat) {
+        switch (etat) {
             case Init:
-            //Interdit
-                break;
-            case Compte:
                 etat = State.Compte;
                 initCpt();
                 afficheCpt();
+                presentation2();
+
+                break;
+            case Compte:
+                //Interdit
                 break;
 
         }
     }//GEN-LAST:event_jButtonStartActionPerformed
 
     private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
-         switch (etat) {
+        switch (etat) {
             case Init:
                 //Interdit
                 break;
@@ -114,16 +118,40 @@ public class Exercice2 extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_jButtonStopActionPerformed
+    private void tickTimerActionPerformed(java.awt.event.ActionEvent e) {
+        switch (etat) {
+            case Init:
+                //Interdit
+                break;
+            case Compte:
+                if (cpt < 15) {
+                    etat = State.Compte;
+                    incrementCpt();
+                    afficheCpt();
+                    presentation2();
+                } else {
+                    etat = State.Init;
+                    initCpt();
+                    afficheCpt();
+                    presentation1();
+                }
+                break;
+        }
+    }
+
     private void presentation1() {
         Tools.activerBoutton(jButtonStart);
         Tools.desactiverBoutton(jButtonStop);
+        myTimer.stop();
     }
 
     private void presentation2() {
         Tools.activerBoutton(jButtonStop);
         Tools.desactiverBoutton(jButtonStart);
+        myTimer.start();
     }
-        private void afficheCpt() {
+
+    private void afficheCpt() {
         labelAffichage.setText(String.valueOf(cpt));
     }
 
@@ -138,6 +166,7 @@ public class Exercice2 extends javax.swing.JFrame {
     private void incrementCpt() {
         cpt++;
     }
+
     /**
      * @param args the command line arguments
      */
@@ -172,9 +201,11 @@ public class Exercice2 extends javax.swing.JFrame {
             }
         });
     }
-        private State etat;
+    private State etat;
     private int cpt;
-    private long timeBetween = 1000;
+    private final Timer myTimer = new Timer(500, (ActionEvent e) -> {
+        tickTimerActionPerformed(e);
+    });
 
     private enum State {
         Init, Compte;

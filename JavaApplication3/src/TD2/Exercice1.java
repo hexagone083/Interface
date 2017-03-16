@@ -122,6 +122,7 @@ public class Exercice1 extends javax.swing.JFrame {
                     etat = State.Compte;
                     incrementCpt();
                     afficheCpt();
+                    presentation2();
                 } else {
                     etat = State.Init;
                     initCpt();

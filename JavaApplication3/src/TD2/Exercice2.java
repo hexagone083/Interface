@@ -11,12 +11,12 @@ import Tools.Tools;
  *
  * @author florian
  */
-public class Exercice1 extends javax.swing.JFrame {
+public class Exercice2 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Exercice1
+     * Creates new form Exercice2
      */
-    public Exercice1() {
+    public Exercice2() {
         initComponents();
         Tools.windowsInit(this);
         initCpt();
@@ -35,7 +35,6 @@ public class Exercice1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonStart = new javax.swing.JButton();
-        jButtonPlus1 = new javax.swing.JButton();
         jButtonStop = new javax.swing.JButton();
         labelAffichage = new javax.swing.JLabel();
 
@@ -45,13 +44,6 @@ public class Exercice1 extends javax.swing.JFrame {
         jButtonStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonStartActionPerformed(evt);
-            }
-        });
-
-        jButtonPlus1.setText("+1");
-        jButtonPlus1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPlus1ActionPerformed(evt);
             }
         });
 
@@ -69,72 +61,48 @@ public class Exercice1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonStart, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonStart, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonStop, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonPlus1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(labelAffichage, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(131, 131, 131))))
+                        .addComponent(jButtonStop, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(labelAffichage, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(labelAffichage, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
+                .addComponent(labelAffichage, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonStart, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonPlus1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonStop, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48))
+                    .addComponent(jButtonStart, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonStop, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
-        switch (etat) {
+         switch (etat) {
             case Init:
-                initCpt();
-                afficheCpt();
-                etat = State.Compte;
-                presentation2();
+            //Interdit
                 break;
             case Compte:
-                //interdit
+                etat = State.Compte;
+                initCpt();
+                afficheCpt();
                 break;
+
         }
     }//GEN-LAST:event_jButtonStartActionPerformed
 
-    private void jButtonPlus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPlus1ActionPerformed
-        switch (etat) {
-            case Init:
-                //Interdit
-                break;
-            case Compte:
-                if (cpt < 3) {
-                    etat = State.Compte;
-                    incrementCpt();
-                    afficheCpt();
-                } else {
-                    etat = State.Init;
-                    initCpt();
-                    presentation1();
-                    //rien
-                }
-
-                break;
-        }
-    }//GEN-LAST:event_jButtonPlus1ActionPerformed
-
     private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
-        switch (etat) {
+         switch (etat) {
             case Init:
                 //Interdit
                 break;
@@ -146,18 +114,16 @@ public class Exercice1 extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_jButtonStopActionPerformed
-
     private void presentation1() {
         Tools.activerBoutton(jButtonStart);
-        Tools.desactiverBoutton(jButtonStop, jButtonPlus1);
+        Tools.desactiverBoutton(jButtonStop);
     }
 
     private void presentation2() {
-        Tools.activerBoutton(jButtonPlus1, jButtonStop);
+        Tools.activerBoutton(jButtonStop);
         Tools.desactiverBoutton(jButtonStart);
     }
-
-    private void afficheCpt() {
+        private void afficheCpt() {
         labelAffichage.setText(String.valueOf(cpt));
     }
 
@@ -172,7 +138,6 @@ public class Exercice1 extends javax.swing.JFrame {
     private void incrementCpt() {
         cpt++;
     }
-
     /**
      * @param args the command line arguments
      */
@@ -190,32 +155,32 @@ public class Exercice1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Exercice1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Exercice2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Exercice1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Exercice2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Exercice1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Exercice2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Exercice1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Exercice2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Exercice1().setVisible(true);
+                new Exercice2().setVisible(true);
             }
         });
     }
-    private State etat;
+        private State etat;
     private int cpt;
+    private long timeBetween = 1000;
 
     private enum State {
         Init, Compte;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonPlus1;
     private javax.swing.JButton jButtonStart;
     private javax.swing.JButton jButtonStop;
     private javax.swing.JLabel labelAffichage;

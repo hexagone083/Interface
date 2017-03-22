@@ -15,12 +15,12 @@ import javax.swing.Timer;
  *
  * @author florian
  */
-public class FeuBritanique extends javax.swing.JFrame {
+public class FeuAutrichien extends javax.swing.JFrame {
 
     /**
      * Creates new form FeuFrancais
      */
-    public FeuBritanique() {
+    public FeuAutrichien() {
         initComponents();
 
         //Actions sur la fenêtre
@@ -166,26 +166,31 @@ public class FeuBritanique extends javax.swing.JFrame {
                 etat = Etat.Arret;
                 presentationArret();
                 eteindreToutLesFeu();
+                initCpt();
                 break;
             case Orange:
                 etat = Etat.Arret;
                 presentationArret();
                 eteindreToutLesFeu();
+                initCpt();
                 break;
             case Vert:
                 etat = Etat.Arret;
                 presentationArret();
                 eteindreToutLesFeu();
+                initCpt();
                 break;
             case OrangeAllume:
                 etat = Etat.Arret;
                 presentationArret();
                 eteindreToutLesFeu();
+                initCpt();
                 break;
             case OrangeEteint:
                 etat = Etat.Arret;
                 presentationArret();
                 eteindreToutLesFeu();
+                initCpt();
                 break;
             case Arret:
                 //Interdit
@@ -194,6 +199,18 @@ public class FeuBritanique extends javax.swing.JFrame {
                 etat = Etat.Arret;
                 presentationArret();
                 eteindreToutLesFeu();
+                initCpt();
+            case VertAllume:
+                etat = Etat.Arret;
+                presentationArret();
+                eteindreToutLesFeu();
+                initCpt();
+                break;
+            case VertEteint:
+                etat = Etat.Arret;
+                presentationArret();
+                eteindreToutLesFeu();
+                initCpt();
                 break;
 
         }
@@ -215,18 +232,27 @@ public class FeuBritanique extends javax.swing.JFrame {
                 etat = Etat.Rouge;
                 presentationRouge();
                 allumeFeu(feuHaut);
+                initCpt();
                 break;
             case OrangeEteint:
                 etat = Etat.Rouge;
                 presentationRouge();
                 allumeFeu(feuHaut);
+                initCpt();
                 break;
             case Arret:
                 etat = Etat.Rouge;
                 presentationRouge();
                 allumeFeu(feuHaut);
+                initCpt();
                 break;
             case RougeOrange:
+                //Interdit
+                break;
+            case VertAllume:
+                //Interdit
+                break;
+            case VertEteint:
                 //Interdit
                 break;
 
@@ -240,16 +266,19 @@ public class FeuBritanique extends javax.swing.JFrame {
                 etat = Etat.OrangeAllume;
                 presentationOrangeAllume();
                 allumeFeu(feuMilieu);
+                initCpt();
                 break;
             case Orange:
                 etat = Etat.OrangeAllume;
                 presentationOrangeAllume();
                 allumeFeu(feuMilieu);
+                initCpt();
                 break;
             case Vert:
                 etat = Etat.OrangeAllume;
                 presentationOrangeAllume();
                 allumeFeu(feuMilieu);
+                initCpt();
                 break;
             case OrangeAllume:
                 //Interdit
@@ -264,6 +293,19 @@ public class FeuBritanique extends javax.swing.JFrame {
                 etat = Etat.OrangeAllume;
                 presentationOrangeAllume();
                 allumeFeu(feuMilieu);
+                initCpt();
+                break;
+            case VertAllume:
+                etat = Etat.OrangeAllume;
+                presentationOrangeAllume();
+                allumeFeu(feuMilieu);
+                initCpt();
+                break;
+            case VertEteint:
+                etat = Etat.OrangeAllume;
+                presentationOrangeAllume();
+                allumeFeu(feuMilieu);
+                initCpt();
                 break;
 
         }
@@ -276,6 +318,7 @@ public class FeuBritanique extends javax.swing.JFrame {
                 etat = Etat.RougeOrange;
                 presentationRougeOrange();
                 allumeFeu(feuHaut, feuMilieu);
+                initCpt();
                 break;
             case Orange:
                 //Interdit
@@ -293,6 +336,12 @@ public class FeuBritanique extends javax.swing.JFrame {
                 //Interdit
                 break;
             case RougeOrange:
+                //Interdit
+                break;
+            case VertAllume:
+                //Interdit
+                break;
+            case VertEteint:
                 //Interdit
                 break;
 
@@ -308,6 +357,7 @@ public class FeuBritanique extends javax.swing.JFrame {
                 etat = Etat.Rouge;
                 presentationRouge();
                 allumeFeu(feuHaut);
+                initCpt();
                 break;
             case Vert:
                 //Interdit
@@ -322,6 +372,12 @@ public class FeuBritanique extends javax.swing.JFrame {
                 //Interdit
                 break;
             case RougeOrange:
+                //Interdit
+                break;
+            case VertAllume:
+                //Interdit
+                break;
+            case VertEteint:
                 //Interdit
                 break;
 
@@ -337,9 +393,10 @@ public class FeuBritanique extends javax.swing.JFrame {
                 //Interdit
                 break;
             case Vert:
-                etat = Etat.Orange;
-                presentationOrange();
-                allumeFeu(feuMilieu);
+                etat = Etat.VertEteint;
+                presentationVertEteint();
+                eteindreToutLesFeu();
+                initCpt();
                 break;
             case OrangeAllume:
                 //Interdit
@@ -351,6 +408,12 @@ public class FeuBritanique extends javax.swing.JFrame {
                 //Interdit
                 break;
             case RougeOrange:
+                //Interdit
+                break;
+            case VertAllume:
+                //Interdit
+                break;
+            case VertEteint:
                 //Interdit
                 break;
 
@@ -372,6 +435,7 @@ public class FeuBritanique extends javax.swing.JFrame {
                 etat = Etat.OrangeEteint;
                 presentationOrangeEteint();
                 eteindreToutLesFeu();
+                initCpt();
                 break;
             case OrangeEteint:
                 //Interdit
@@ -380,6 +444,12 @@ public class FeuBritanique extends javax.swing.JFrame {
                 //Interdit
                 break;
             case RougeOrange:
+                //Interdit
+                break;
+            case VertAllume:
+                //Interdit
+                break;
+            case VertEteint:
                 //Interdit
                 break;
 
@@ -404,11 +474,18 @@ public class FeuBritanique extends javax.swing.JFrame {
                 etat = Etat.OrangeAllume;
                 presentationOrangeAllume();
                 allumeFeu(feuMilieu);
+                initCpt();
                 break;
             case Arret:
                 //Interdit
                 break;
             case RougeOrange:
+                //Interdit
+                break;
+            case VertAllume:
+                //Interdit
+                break;
+            case VertEteint:
                 //Interdit
                 break;
 
@@ -439,6 +516,90 @@ public class FeuBritanique extends javax.swing.JFrame {
                 etat = Etat.Vert;
                 presentationVert();
                 allumeFeu(feuBas);
+                initCpt();
+                break;
+            case VertAllume:
+                //Interdit
+                break;
+            case VertEteint:
+                //Interdit
+                break;
+
+        }
+    }
+
+    private void tickTimerVertAllume(ActionEvent e) {
+        switch (etat) {
+            case Rouge:
+                //Interdit
+                break;
+            case Orange:
+                //Interdit
+                break;
+            case Vert:
+                //Interdit
+                break;
+            case OrangeAllume:
+                //Interdit
+                break;
+            case OrangeEteint:
+                //Interdit
+                break;
+            case Arret:
+                //Interdit
+                break;
+            case RougeOrange:
+            //Interdit
+            case VertAllume:
+                etat = Etat.VertEteint;
+                presentationVertEteint();
+                eteindreToutLesFeu();
+                break;
+            case VertEteint:
+                //Interdit
+                break;
+
+        }
+    }
+
+    private void tickTimerVertEteint(ActionEvent e) {
+        switch (etat) {
+            case Rouge:
+                //Interdit
+                break;
+            case Orange:
+                //Interdit
+                break;
+            case Vert:
+                //Interdit
+                break;
+            case OrangeAllume:
+                //Interdit
+                break;
+            case OrangeEteint:
+                //Interdit
+                break;
+            case Arret:
+                //Interdit
+                break;
+            case RougeOrange:
+                //Interdit
+                break;
+            case VertAllume:
+                //Interdit
+                break;
+            case VertEteint:
+                if (compteur < 4) {
+                    etat = Etat.VertAllume;
+                    presentationVertAllume();
+                    allumeFeu(feuBas);
+                    incrementCpt();
+                } else {
+                    etat = Etat.Orange;
+                    presentationOrange();
+                    allumeFeu(feuMilieu);
+                    initCpt();
+                }
                 break;
 
         }
@@ -454,7 +615,7 @@ public class FeuBritanique extends javax.swing.JFrame {
         Tools.desactiverBoutton(bouttonArret, bouttonPanne);
 
         //Gestion des timmers
-        Tools.desactiverTimers(timer_rouge, timer_orange, timer_vert, timer_orange_allume, timer_orange_eteint, timer_rouge_orange);
+        Tools.desactiverTimers(timer_rouge, timer_orange, timer_vert, timer_orange_allume, timer_orange_eteint, timer_rouge_orange, timer_vert_allume, timer_vert_eteint);
     }
 
     private void presentationRouge() {
@@ -463,7 +624,7 @@ public class FeuBritanique extends javax.swing.JFrame {
         Tools.desactiverBoutton(bouttonMarche);
 
         //Gestion des timmers
-        Tools.desactiverTimers(timer_orange, timer_vert, timer_orange_allume, timer_orange_eteint, timer_rouge_orange);
+        Tools.desactiverTimers(timer_orange, timer_vert, timer_orange_allume, timer_orange_eteint, timer_rouge_orange, timer_vert_allume, timer_vert_eteint);
         Tools.activerTimers(timer_rouge);
     }
 
@@ -473,7 +634,7 @@ public class FeuBritanique extends javax.swing.JFrame {
         Tools.desactiverBoutton(bouttonMarche);
 
         //Gestion des timmers
-        Tools.desactiverTimers(timer_rouge, timer_orange, timer_orange_allume, timer_orange_eteint, timer_rouge_orange);
+        Tools.desactiverTimers(timer_rouge, timer_orange, timer_orange_allume, timer_orange_eteint, timer_rouge_orange, timer_vert_allume, timer_vert_eteint);
         Tools.activerTimers(timer_vert);
     }
 
@@ -483,7 +644,7 @@ public class FeuBritanique extends javax.swing.JFrame {
         Tools.desactiverBoutton(bouttonMarche);
 
         //Gestion des timmers
-        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange_allume, timer_orange_eteint, timer_rouge_orange);
+        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange_allume, timer_orange_eteint, timer_rouge_orange, timer_vert_allume, timer_vert_eteint);
         Tools.activerTimers(timer_orange);
     }
 
@@ -493,7 +654,7 @@ public class FeuBritanique extends javax.swing.JFrame {
         Tools.desactiverBoutton(bouttonPanne);
 
         //Gestion des timmers
-        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange, timer_orange_eteint, timer_rouge_orange);
+        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange, timer_orange_eteint, timer_rouge_orange, timer_vert_allume, timer_vert_eteint);
         Tools.activerTimers(timer_orange_allume);
     }
 
@@ -503,7 +664,7 @@ public class FeuBritanique extends javax.swing.JFrame {
         Tools.desactiverBoutton(bouttonPanne);
 
         //Gestion des timmers
-        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange, timer_orange_allume, timer_rouge_orange);
+        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange, timer_orange_allume, timer_rouge_orange, timer_vert_allume, timer_vert_eteint);
         Tools.activerTimers(timer_orange_eteint);
     }
 
@@ -513,8 +674,28 @@ public class FeuBritanique extends javax.swing.JFrame {
         Tools.desactiverBoutton(bouttonMarche);
 
         //Gestion des timmers
-        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange, timer_orange_allume, timer_orange_eteint);
+        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange, timer_orange_allume, timer_orange_eteint, timer_vert_allume, timer_vert_eteint);
         Tools.activerTimers(timer_rouge_orange);
+    }
+
+    private void presentationVertAllume() {
+        //Gestion des bouttons
+        Tools.activerBoutton(bouttonArret, bouttonPanne);
+        Tools.desactiverBoutton(bouttonMarche);
+
+        //Gestion des timmers
+        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange, timer_orange_allume, timer_orange_eteint, timer_vert_eteint);
+        Tools.activerTimers(timer_vert_allume);
+    }
+
+    private void presentationVertEteint() {
+        //Gestion des bouttons
+        Tools.activerBoutton(bouttonArret, bouttonPanne);
+        Tools.desactiverBoutton(bouttonMarche);
+
+        //Gestion des timmers
+        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange, timer_orange_allume, timer_orange_eteint, timer_vert_allume);
+        Tools.activerTimers(timer_vert_eteint);
     }
 
     /*
@@ -535,6 +716,17 @@ public class FeuBritanique extends javax.swing.JFrame {
     }
 
     /**
+     * Méthodes du compteur
+     */
+    private void initCpt() {
+        compteur = 0;
+    }
+
+    private void incrementCpt() {
+        compteur++;
+    }
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -551,30 +743,33 @@ public class FeuBritanique extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FeuBritanique.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeuAutrichien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FeuBritanique.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeuAutrichien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FeuBritanique.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeuAutrichien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FeuBritanique.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FeuAutrichien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FeuBritanique().setVisible(true);
+                new FeuAutrichien().setVisible(true);
             }
         });
     }
 
     //Liste des états
     private enum Etat {
-        Rouge, Orange, Vert, OrangeAllume, OrangeEteint, Arret, RougeOrange
+        Rouge, Orange, Vert, OrangeAllume, OrangeEteint, Arret, RougeOrange, VertAllume, VertEteint
     }
     private Etat etat;
+    private int compteur;
 
     //Temps d'attents pour les timmers en ms
     private final int temps_rouge = 2000;
@@ -583,6 +778,8 @@ public class FeuBritanique extends javax.swing.JFrame {
     private final int temps_orange_allume = 500;
     private final int temps_orange_etteint = 500;
     private final int temps_rouge_orange = 1000;
+    private final int temps_vert_allume = 1000;
+    private final int temps_vert_etteint = 1000;
 
     //Initialisation des timmers
     private final Timer timer_rouge = new Timer(temps_rouge, this::tickTimerRouge);
@@ -591,6 +788,8 @@ public class FeuBritanique extends javax.swing.JFrame {
     private final Timer timer_orange_allume = new Timer(temps_orange_allume, this::tickTimerOrangeAllume);
     private final Timer timer_orange_eteint = new Timer(temps_orange_etteint, this::tickTimerOrangeEteint);
     private final Timer timer_rouge_orange = new Timer(temps_rouge_orange, this::tickTimerRougeOrange);
+    private final Timer timer_vert_eteint = new Timer(temps_rouge_orange, this::tickTimerVertEteint);
+    private final Timer timer_vert_allume = new Timer(temps_rouge_orange, this::tickTimerVertAllume);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bouttonArret;

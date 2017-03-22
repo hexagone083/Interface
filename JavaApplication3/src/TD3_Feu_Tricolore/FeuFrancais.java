@@ -25,6 +25,7 @@ public class FeuFrancais extends javax.swing.JFrame {
 
         //Actions sur la fenêtre
         Tools.windowsInit(this);
+        Tools.setIcone("./src/Icones/Icone_Feu.png", this);
         this.setResizable(false);
 
         //Initialisation de la vue
@@ -181,7 +182,7 @@ public class FeuFrancais extends javax.swing.JFrame {
                 presentationArret();
                 eteindreToutLesFeu();
                 break;
-            case OrangeEtteint:
+            case OrangeEteint:
                 etat = Etat.Arret;
                 presentationArret();
                 eteindreToutLesFeu();
@@ -210,7 +211,7 @@ public class FeuFrancais extends javax.swing.JFrame {
                 presentationRouge();
                 allumeFeu(feuHaut);
                 break;
-            case OrangeEtteint:
+            case OrangeEteint:
                 etat = Etat.Rouge;
                 presentationRouge();
                 allumeFeu(feuHaut);
@@ -245,7 +246,7 @@ public class FeuFrancais extends javax.swing.JFrame {
             case OrangeAllume:
                 //Interdit
                 break;
-            case OrangeEtteint:
+            case OrangeEteint:
                 //Interdit
                 break;
             case Arret:
@@ -272,7 +273,7 @@ public class FeuFrancais extends javax.swing.JFrame {
             case OrangeAllume:
                 //Interdit
                 break;
-            case OrangeEtteint:
+            case OrangeEteint:
                 //Interdit
                 break;
             case Arret:
@@ -298,7 +299,7 @@ public class FeuFrancais extends javax.swing.JFrame {
             case OrangeAllume:
                 //Interdit
                 break;
-            case OrangeEtteint:
+            case OrangeEteint:
                 //Interdit
                 break;
             case Arret:
@@ -324,7 +325,7 @@ public class FeuFrancais extends javax.swing.JFrame {
             case OrangeAllume:
                 //Interdit
                 break;
-            case OrangeEtteint:
+            case OrangeEteint:
                 //Interdit
                 break;
             case Arret:
@@ -346,11 +347,11 @@ public class FeuFrancais extends javax.swing.JFrame {
                 //Interdit
                 break;
             case OrangeAllume:
-                etat = Etat.OrangeEtteint;
+                etat = Etat.OrangeEteint;
                 presentationOrangeEteint();
                 eteindreToutLesFeu();
                 break;
-            case OrangeEtteint:
+            case OrangeEteint:
                 //Interdit
                 break;
             case Arret:
@@ -360,7 +361,7 @@ public class FeuFrancais extends javax.swing.JFrame {
         }
     }
 
-    private void tickTimerOrangeEtteint(ActionEvent e) {
+    private void tickTimerOrangeEteint(ActionEvent e) {
         switch (etat) {
             case Rouge:
                 //Interdit
@@ -374,7 +375,7 @@ public class FeuFrancais extends javax.swing.JFrame {
             case OrangeAllume:
                 //Interdit
                 break;
-            case OrangeEtteint:
+            case OrangeEteint:
                 etat = Etat.OrangeAllume;
                 presentationOrangeAllume();
                 allumeFeu(feuMilieu);
@@ -500,9 +501,9 @@ public class FeuFrancais extends javax.swing.JFrame {
 
     //Liste des états
     private enum Etat {
-        Rouge, Orange, Vert, OrangeAllume, OrangeEtteint, Arret
+        Rouge, Orange, Vert, OrangeAllume, OrangeEteint, Arret
     }
-    Etat etat;
+    private Etat etat;
 
     //Temps d'attents pour les timmers en ms
     private final int temps_rouge = 2000;
@@ -516,7 +517,7 @@ public class FeuFrancais extends javax.swing.JFrame {
     private final Timer timer_orange = new Timer(temps_orange, this::tickTimerOrange);
     private final Timer timer_vert = new Timer(temps_vert, this::tickTimerVert);
     private final Timer timer_orange_allume = new Timer(temps_orange_allume, this::tickTimerOrangeAllume);
-    private final Timer timer_orange_eteint = new Timer(temps_orange_etteint, this::tickTimerOrangeEtteint);
+    private final Timer timer_orange_eteint = new Timer(temps_orange_etteint, this::tickTimerOrangeEteint);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bouttonArret;

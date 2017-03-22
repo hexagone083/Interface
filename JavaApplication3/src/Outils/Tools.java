@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tools;
+package Outils;
 
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.Timer;
@@ -66,6 +69,14 @@ public class Tools {
     public static void desactiverBoutton(JButton... jb) {
         for (JButton b : jb) {
             b.setEnabled(false);
+        }
+    }
+    
+    public static void setIcone(String path, JFrame j){
+        try {
+            j.setIconImage(ImageIO.read(new File(path)));
+        } catch (IOException ex) {
+            System.out.println("Logo non trouvé!");
         }
     }
 

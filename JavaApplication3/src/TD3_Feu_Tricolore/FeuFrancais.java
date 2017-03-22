@@ -25,6 +25,7 @@ public class FeuFrancais extends javax.swing.JFrame {
 
         //Actions sur la fenêtre
         Tools.windowsInit(this);
+        this.setResizable(false);
 
         //Initialisation de la vue
         etat = Etat.Arret;
@@ -165,7 +166,7 @@ public class FeuFrancais extends javax.swing.JFrame {
                 presentationArret();
                 eteindreToutLesFeu();
                 break;
-            case Oange:
+            case Orange:
                 etat = Etat.Arret;
                 presentationArret();
                 eteindreToutLesFeu();
@@ -198,7 +199,7 @@ public class FeuFrancais extends javax.swing.JFrame {
             case Rouge:
                 //Interdit
                 break;
-            case Oange:
+            case Orange:
                 //Interdit
                 break;
             case Vert:
@@ -227,16 +228,28 @@ public class FeuFrancais extends javax.swing.JFrame {
     private void bouttonPanneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouttonPanneActionPerformed
         switch (etat) {
             case Rouge:
+                etat = Etat.OrangeAllume;
+                presentationOrangeAllume();
+                allumeFeu(feuMilieu);
                 break;
-            case Oange:
+            case Orange:
+                etat = Etat.OrangeAllume;
+                presentationOrangeAllume();
+                allumeFeu(feuMilieu);
                 break;
             case Vert:
+                etat = Etat.OrangeAllume;
+                presentationOrangeAllume();
+                allumeFeu(feuMilieu);
                 break;
             case OrangeAllume:
+                //Interdit
                 break;
             case OrangeEtteint:
+                //Interdit
                 break;
             case Arret:
+                //Interdit
                 break;
 
         }
@@ -250,7 +263,7 @@ public class FeuFrancais extends javax.swing.JFrame {
                 presentationVert();
                 allumeFeu(feuBas);
                 break;
-            case Oange:
+            case Orange:
                 //Interdit
                 break;
             case Vert:
@@ -272,16 +285,24 @@ public class FeuFrancais extends javax.swing.JFrame {
     private void tickTimerOrange(ActionEvent e) {
         switch (etat) {
             case Rouge:
+                //Interdit
                 break;
-            case Oange:
+            case Orange:
+                etat = Etat.Rouge;
+                presentationRouge();
+                allumeFeu(feuHaut);
                 break;
             case Vert:
+                //Interdit
                 break;
             case OrangeAllume:
+                //Interdit
                 break;
             case OrangeEtteint:
+                //Interdit
                 break;
             case Arret:
+                //Interdit
                 break;
 
         }
@@ -290,16 +311,24 @@ public class FeuFrancais extends javax.swing.JFrame {
     private void tickTimerVert(ActionEvent e) {
         switch (etat) {
             case Rouge:
+                //Interdit
                 break;
-            case Oange:
+            case Orange:
+                //Interdit
                 break;
             case Vert:
+                etat = Etat.Orange;
+                presentationOrange();
+                allumeFeu(feuMilieu);
                 break;
             case OrangeAllume:
+                //Interdit
                 break;
             case OrangeEtteint:
+                //Interdit
                 break;
             case Arret:
+                //Interdit
                 break;
 
         }
@@ -308,16 +337,24 @@ public class FeuFrancais extends javax.swing.JFrame {
     private void tickTimerOrangeAllume(ActionEvent e) {
         switch (etat) {
             case Rouge:
+                //Interdit
                 break;
-            case Oange:
+            case Orange:
+                //Interdit
                 break;
             case Vert:
+                //Interdit
                 break;
             case OrangeAllume:
+                etat = Etat.OrangeEtteint;
+                presentationOrangeEteint();
+                eteindreToutLesFeu();
                 break;
             case OrangeEtteint:
+                //Interdit
                 break;
             case Arret:
+                //Interdit
                 break;
 
         }
@@ -326,16 +363,24 @@ public class FeuFrancais extends javax.swing.JFrame {
     private void tickTimerOrangeEtteint(ActionEvent e) {
         switch (etat) {
             case Rouge:
+                //Interdit
                 break;
-            case Oange:
+            case Orange:
+                //Interdit
                 break;
             case Vert:
+                //Interdit
                 break;
             case OrangeAllume:
+                //Interdit
                 break;
             case OrangeEtteint:
+                etat = Etat.OrangeAllume;
+                presentationOrangeAllume();
+                allumeFeu(feuMilieu);
                 break;
             case Arret:
+                //Interdit
                 break;
 
         }
@@ -370,8 +415,38 @@ public class FeuFrancais extends javax.swing.JFrame {
         Tools.desactiverBoutton(bouttonMarche);
 
         //Gestion des timmers
-        Tools.desactiverTimers(timer_rouge, timer_orange, timer_vert, timer_orange_allume, timer_orange_eteint);
+        Tools.desactiverTimers(timer_rouge, timer_orange, timer_orange_allume, timer_orange_eteint);
         Tools.activerTimers(timer_vert);
+    }
+
+    private void presentationOrange() {
+        //Gestion des bouttons
+        Tools.activerBoutton(bouttonArret, bouttonPanne);
+        Tools.desactiverBoutton(bouttonMarche);
+
+        //Gestion des timmers
+        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange_allume, timer_orange_eteint);
+        Tools.activerTimers(timer_orange);
+    }
+
+    private void presentationOrangeAllume() {
+        //Gestion des bouttons
+        Tools.activerBoutton(bouttonArret, bouttonMarche);
+        Tools.desactiverBoutton(bouttonPanne);
+
+        //Gestion des timmers
+        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange, timer_orange_eteint);
+        Tools.activerTimers(timer_orange_allume);
+    }
+
+    private void presentationOrangeEteint() {
+        //Gestion des bouttons
+        Tools.activerBoutton(bouttonArret, bouttonMarche);
+        Tools.desactiverBoutton(bouttonPanne);
+
+        //Gestion des timmers
+        Tools.desactiverTimers(timer_rouge, timer_vert, timer_orange, timer_orange_allume);
+        Tools.activerTimers(timer_orange_eteint);
     }
 
     /*
@@ -425,16 +500,16 @@ public class FeuFrancais extends javax.swing.JFrame {
 
     //Liste des états
     private enum Etat {
-        Rouge, Oange, Vert, OrangeAllume, OrangeEtteint, Arret
+        Rouge, Orange, Vert, OrangeAllume, OrangeEtteint, Arret
     }
     Etat etat;
 
     //Temps d'attents pour les timmers en ms
-    private final int temps_rouge = 1000;
-    private final int temps_orange = 1000;
-    private final int temps_vert = 1000;
-    private final int temps_orange_allume = 1000;
-    private final int temps_orange_etteint = 1000;
+    private final int temps_rouge = 2000;
+    private final int temps_orange = 1500;
+    private final int temps_vert = 3000;
+    private final int temps_orange_allume = 500;
+    private final int temps_orange_etteint = 500;
 
     //Initialisation des timmers
     private final Timer timer_rouge = new Timer(temps_rouge, this::tickTimerRouge);

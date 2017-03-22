@@ -788,8 +788,8 @@ public class FeuAutrichien extends javax.swing.JFrame {
     private final Timer timer_orange_allume = new Timer(temps_orange_allume, this::tickTimerOrangeAllume);
     private final Timer timer_orange_eteint = new Timer(temps_orange_etteint, this::tickTimerOrangeEteint);
     private final Timer timer_rouge_orange = new Timer(temps_rouge_orange, this::tickTimerRougeOrange);
-    private final Timer timer_vert_eteint = new Timer(temps_rouge_orange, this::tickTimerVertEteint);
-    private final Timer timer_vert_allume = new Timer(temps_rouge_orange, this::tickTimerVertAllume);
+    private final Timer timer_vert_eteint = new Timer(temps_vert_etteint, this::tickTimerVertEteint);
+    private final Timer timer_vert_allume = new Timer(temps_vert_allume, this::tickTimerVertAllume);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bouttonArret;

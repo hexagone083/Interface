@@ -202,6 +202,7 @@ public class Exercice3 extends javax.swing.JFrame {
                     presentationUp();
                 } else {
                     etat = State.Init;
+                    initCpt();
                     afficheCpt();
                     presentationInit();
                 }

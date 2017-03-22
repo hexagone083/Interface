@@ -24,7 +24,7 @@ public class Exercice2 extends javax.swing.JFrame {
         initCpt();
         afficheCpt();
         etat = State.Init;
-        presentation1();
+        presentationInit();
     }
 
     /**
@@ -95,7 +95,7 @@ public class Exercice2 extends javax.swing.JFrame {
                 etat = State.Compte;
                 initCpt();
                 afficheCpt();
-                presentation2();
+                presentationCompte();
 
                 break;
             case Compte:
@@ -114,7 +114,7 @@ public class Exercice2 extends javax.swing.JFrame {
                 etat = State.Init;
                 afficheChaine("Pouf");
                 initCpt();
-                presentation1();
+                presentationInit();
                 break;
         }
     }//GEN-LAST:event_jButtonStopActionPerformed
@@ -128,24 +128,24 @@ public class Exercice2 extends javax.swing.JFrame {
                     etat = State.Compte;
                     incrementCpt();
                     afficheCpt();
-                    presentation2();
+                    presentationCompte();
                 } else {
                     etat = State.Init;
                     initCpt();
                     afficheCpt();
-                    presentation1();
+                    presentationInit();
                 }
                 break;
         }
     }
 
-    private void presentation1() {
+    private void presentationInit() {
         Tools.activerBoutton(jButtonStart);
         Tools.desactiverBoutton(jButtonStop);
         myTimer.stop();
     }
 
-    private void presentation2() {
+    private void presentationCompte() {
         Tools.activerBoutton(jButtonStop);
         Tools.desactiverBoutton(jButtonStart);
         myTimer.start();

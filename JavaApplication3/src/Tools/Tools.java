@@ -7,6 +7,7 @@ package Tools;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
 /**
  *
@@ -22,6 +23,28 @@ public class Tools {
         //jf.setResizable(false);
         jf.setLocationRelativeTo(null);
 
+    }
+
+    /**
+     * Multi start for timmers.
+     *
+     * @param t
+     */
+    public static void activerTimers(Timer... t) {
+        for (Timer timer : t) {
+            timer.start();
+        }
+    }
+
+    /**
+     * Multi stop for timmers.
+     *
+     * @param t
+     */
+    public static void desactiverTimers(Timer... t) {
+        for (Timer timer : t) {
+            timer.stop();
+        }
     }
 
     /**
@@ -45,5 +68,5 @@ public class Tools {
             b.setEnabled(false);
         }
     }
-    
+
 }

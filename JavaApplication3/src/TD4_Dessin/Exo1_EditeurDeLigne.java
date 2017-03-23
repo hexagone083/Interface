@@ -19,6 +19,8 @@ public class Exo1_EditeurDeLigne extends javax.swing.JFrame {
     public Exo1_EditeurDeLigne() {
         initComponents();
         Tools.windowsInit(this);
+        Tools.setIcone("./src/Icones/Icone_Lines.bmp", this);
+        this.setTitle("Editeur de lignes simple");
         //this.setResizable(false);
         etat = Etat.Init;
     }
@@ -54,11 +56,11 @@ public class Exo1_EditeurDeLigne extends javax.swing.JFrame {
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 875, Short.MAX_VALUE)
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 468, Short.MAX_VALUE)
+            .addGap(0, 699, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -25,6 +25,8 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
         valeur_maximum = 5;
         initComponents();
         Tools.windowsInit(this);
+        Tools.setIcone("./src/Icones/Icone_Lines.bmp", this);
+        this.setTitle("Editeur de poly-Lignes");
         etat = Etat.Init;
         //rien
         initNombrePoints();
@@ -64,11 +66,11 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 682, Short.MAX_VALUE)
+            .addGap(0, 939, Short.MAX_VALUE)
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 616, Short.MAX_VALUE)
+            .addGap(0, 770, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

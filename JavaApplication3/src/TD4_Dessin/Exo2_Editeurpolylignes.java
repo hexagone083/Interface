@@ -7,6 +7,7 @@ package TD4_Dessin;
 
 import Outils.Tools;
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import static javax.swing.SwingUtilities.isLeftMouseButton;
 import static javax.swing.SwingUtilities.isRightMouseButton;
@@ -21,7 +22,7 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
      * Creates new form Exo2_Editeurpolylignes
      */
     public Exo2_Editeurpolylignes() {
-        valeur_maximum = 254;
+        valeur_maximum = 5;
         initComponents();
         Tools.windowsInit(this);
         etat = Etat.Init;
@@ -42,10 +43,15 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
         panel = new Outil_DrawLine.LigneMultiples();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         panel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                panelMouseDragged(evt);
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                panelMouseMoved(evt);
             }
         });
         panel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -53,42 +59,34 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
                 panelMouseClicked(evt);
             }
         });
-        panel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                panelKeyPressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addGap(0, 682, Short.MAX_VALUE)
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 446, Short.MAX_VALUE)
+            .addGap(0, 616, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMouseClicked
+
         if (isRightMouseButton(evt)) {
             clickDroit(evt);
         } else if (isLeftMouseButton(evt)) {
@@ -97,6 +95,7 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
     }//GEN-LAST:event_panelMouseClicked
 
     private void clickDroit(java.awt.event.MouseEvent evt) {
+
         switch (etat) {
             case Init:
                 etat = Etat.Init;
@@ -113,13 +112,13 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
                     etat = Etat.Plusieurs;
                     supprimerDernierPoint();
                     tracerPolyligneNoire();
-                    tracerLigneTemporaire();
+                    tracerLigneTemporaire(evt.getPoint());
                     decrementNombrePoints();
                 } else if (nombrePoints() <= 2) {
                     etat = Etat.UnPoint;
                     supprimerDernierPoint();
                     tracerPolyligneNoire();
-                    tracerLigneTemporaire();
+                    tracerLigneTemporaire(evt.getPoint());
                     setValeurNombrePoint(1);
                 }
                 break;
@@ -128,7 +127,7 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
                 etat = Etat.Plusieurs;
                 supprimerDernierPoint();
                 tracerPolyligneNoire();
-                tracerLigneTemporaire();
+                tracerLigneTemporaire(evt.getPoint());
                 decrementNombrePoints();
                 break;
 
@@ -136,6 +135,7 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
     }
 
     private void clickGauche(java.awt.event.MouseEvent evt) {
+
         switch (etat) {
             case Init:
                 etat = Etat.UnPoint;
@@ -170,33 +170,8 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
         }
     }
 
-    private void panelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMouseDragged
-        switch (etat) {
-            case Init:
-                etat = Etat.Init;
-                //Ne rien faire
-                initNombrePoints();
-                break;
-            case UnPoint:
-                etat = Etat.UnPoint;
-                tracerLigneTemporaire();
-                //n = n;
-                break;
-            case Plusieurs:
-                etat = Etat.Plusieurs;
-                tracerLigneTemporaire();
-                //n = n;
-                break;
-            case Max:
-                etat = Etat.Plusieurs;
-                tracerLigneTemporaire();
-                //n = n;
-                break;
+    private void KeyPressEspace(java.awt.event.KeyEvent evt) {
 
-        }
-    }//GEN-LAST:event_panelMouseDragged
-
-    private void KeyPressEnter(java.awt.event.KeyEvent evt) {
         switch (etat) {
             case Init:
                 etat = Etat.Init;
@@ -225,16 +200,43 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
         }
     }
 
-    private void panelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_panelKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            KeyPressEnter(evt);
+    private void panelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMouseMoved
+        switch (etat) {
+            case Init:
+                etat = Etat.Init;
+                //Ne rien faire
+                initNombrePoints();
+                break;
+            case UnPoint:
+                etat = Etat.UnPoint;
+                tracerLigneTemporaire(evt.getPoint());
+                //n = n;
+                break;
+            case Plusieurs:
+                etat = Etat.Plusieurs;
+                tracerLigneTemporaire(evt.getPoint());
+                //n = n;
+                break;
+            case Max:
+                etat = Etat.Plusieurs;
+                tracerLigneTemporaire(evt.getPoint());
+                //n = n;
+                break;
+
         }
-    }//GEN-LAST:event_panelKeyPressed
+    }//GEN-LAST:event_panelMouseMoved
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
+            KeyPressEspace(evt);
+        }
+    }//GEN-LAST:event_formKeyPressed
 
     /**
      * Méthodes de gestion des points
      */
     private void initNombrePoints() {
+     
         panel.setNombre_points(0);
     }
 
@@ -266,15 +268,19 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
         panel.repaint();
     }
 
-    private void tracerLigneTemporaire() {
+    private void tracerLigneTemporaire(Point point_temporaire) {
 
+        panel.setCouleur(Color.BLACK);
+        panel.setPoint_temporaire(point_temporaire);
+        panel.repaint();
     }
+
     private void enregistrerPolyligne() {
-     
+        panel.sauvegarde();
     }
 
     private void tracerPolylignesRouge() {
-      
+        panel.repaint();
     }
 
     /**
@@ -311,8 +317,6 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
             }
         });
     }
-
-    
 
     //Liste des états
     private enum Etat {

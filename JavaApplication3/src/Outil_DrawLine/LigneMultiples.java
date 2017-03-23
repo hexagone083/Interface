@@ -21,9 +21,9 @@ public class LigneMultiples extends JPanel {
     private final Stack<Point> liste = new Stack<>();
     private Color couleur;
     private Point point_temporaire;
+    private LignesSauvegardes lignes_sauvegardees = null;
 
     public void ajouterPoint(Point p) {
-        System.out.println("Add point. size: " + liste.size());
         liste.add(p);
     }
 
@@ -46,27 +46,33 @@ public class LigneMultiples extends JPanel {
     public void setPoint_temporaire(Point point_temporaire) {
         this.point_temporaire = new Point(point_temporaire);
     }
-      public void sauvegarde() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    public void sauvegarde() {
+        lignes_sauvegardees = new LignesSauvegardes(liste);
+        liste.removeAllElements();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        //Trace les lignes sauvegardées
+        if (point_temporaire != null) {
+            g.drawLine(liste.lastElement().x, liste.lastElement().y,
+                    point_temporaire.x, point_temporaire.y);
+        }
+        //trace les lignes trécées en cours
         g.setColor(couleur);
         for (int i = 0; i < liste.size() - 1; i++) {
             g.drawLine(liste.get(i).x, liste.get(i).y,
                     liste.get(i + 1).x, liste.get(i + 1).y);
         }
         //Tracage de la ligne temporaire
-        if (point_temporaire != null) {
-            g.drawLine(liste.lastElement().x, liste.lastElement().y,
-                    point_temporaire.x, point_temporaire.y);
+        if (lignes_sauvegardees != null) {
+            lignes_sauvegardees.repaint(g);
         }
+
         point_temporaire = null;
 
     }
-
-  
 
 }

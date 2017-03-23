@@ -5,6 +5,7 @@
  */
 package Outil_DrawLine;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.Stack;
@@ -13,18 +14,19 @@ import java.util.Stack;
  *
  * @author florian
  */
-public class LignesMultiple2 {
+public class LignesSauvegardes {
 
-    private final Stack<Point> multiLigne = new Stack<>();
+    private final Stack<Point> liste = new Stack<>();
 
-    public LignesMultiple2(Stack l) {
-        multiLigne.addAll(l);
+    public LignesSauvegardes(Stack l) {
+        liste.addAll(l);
     }
 
     public void repaint(Graphics g) {
-        for (int i = 0; i < multiLigne.size() - 1; i++) {
-            g.drawLine(multiLigne.get(i).x, multiLigne.get(i).y,
-                    multiLigne.get(i + 1).x, multiLigne.get(i + 1).y);
+        g.setColor(Color.RED);
+        for (int i = 0; i < liste.size() -1 ; i++) {
+            g.drawLine(liste.get(i).x, liste.get(i).y,
+                    liste.get(i + 1).x, liste.get(i + 1).y);
         }
     }
 }

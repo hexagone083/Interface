@@ -32,7 +32,7 @@ public class Exo1_EditeurDeLigne extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new Outils.Ligne();
+        panel = new Outil_DrawLine.Ligne();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,6 +165,6 @@ public class Exo1_EditeurDeLigne extends javax.swing.JFrame {
     private Etat etat;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Outils.Ligne panel;
+    private Outil_DrawLine.Ligne panel;
     // End of variables declaration//GEN-END:variables
 }

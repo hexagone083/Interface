@@ -18,10 +18,10 @@ import javax.swing.JPanel;
 public class LigneMultiples extends JPanel {
 
     private int nombre_points;
-    private final Stack<Point> liste = new Stack<>();
+    private Stack<Point> liste = new Stack<>();
     private Color couleur;
     private Point point_temporaire;
-    private LignesSauvegardes lignes_sauvegardees = null;
+    private final ligneSauvegarde lignes_sauvegardees = new ligneSauvegarde();
 
     public void ajouterPoint(Point p) {
         liste.add(p);
@@ -48,8 +48,9 @@ public class LigneMultiples extends JPanel {
     }
 
     public void sauvegarde() {
-        lignes_sauvegardees = new LignesSauvegardes(liste);
-        liste.removeAllElements();
+        lignes_sauvegardees.ajouteSauvegarde(liste);
+   
+        liste = new Stack <> ();
     }
 
     @Override
@@ -67,9 +68,7 @@ public class LigneMultiples extends JPanel {
                     liste.get(i + 1).x, liste.get(i + 1).y);
         }
         //Tracage de la ligne temporaire
-        if (lignes_sauvegardees != null) {
-            lignes_sauvegardees.repaint(g);
-        }
+        lignes_sauvegardees.repaint(g);
 
         point_temporaire = null;
 

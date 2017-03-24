@@ -278,6 +278,7 @@ public class Exo2_Editeurpolylignes extends javax.swing.JFrame {
     }
 
     private void enregistrerPolyligne() {
+        System.out.println("Sauvegarde");
         panel.sauvegarde();
     }
 
